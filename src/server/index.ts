@@ -1,1 +1,16 @@
-console.log("Hola mundo desde el server")
+import express, { Express, Request, Response } from "express";
+import { config } from "./config/";
+
+const app: Express = express();
+
+app.get('/', (request: Request, response: Response) => {
+  response.send(`<h1>Hello world from ${request.url}</h1>`);
+});
+
+app.get('*', (request: Request, response: Response) => {
+  response.send(`<h1>Hello world from ${request.url}</h1>`);
+});
+
+app.listen(config.PORT, () => {
+  console.log(`listening in http://localhost:${config.PORT}`);
+});
