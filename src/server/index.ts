@@ -1,11 +1,13 @@
 import express, { Express, Request, Response } from "express";
 import { config } from "./config/";
-import { template } from './render/template';
+import { render } from "./render";
 
 const app: Express = express();
 
+app.use(express.static('dist'));
+
 app.get('/', (request: Request, response: Response) => {
-  response.send(template(`<h1>Hello world from: ${request.url}</h1>`));
+  response.send(render(request.url));
 });
 
 app.get('*', (request: Request, response: Response) => {

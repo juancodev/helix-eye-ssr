@@ -1,5 +1,4 @@
 const path = require('path')
-const HTMLWebpackPlugin = require('html-webpack-plugin');
 const dotenv = require('dotenv')
 
 dotenv.config()
@@ -20,8 +19,7 @@ module.exports = {
     publicPath: '/'
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.(tsx|ts)?$/,
         use: {
           loader: "swc-loader",
@@ -39,22 +37,16 @@ module.exports = {
       },
       {
         test: /\.ico$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-            },
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
           },
-        ],
+        }, ],
       },
     ]
   },
-  plugins: [
-    new HTMLWebpackPlugin({
-      template: './src/public/index.html',
-    })
-  ],
+  plugins: [],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },

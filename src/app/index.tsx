@@ -1,9 +1,14 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { App } from './containers/App';
-import './assets/favicon.ico'
+import React from "react";
+import { hydrateRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import { App } from "./containers/App";
+import "./assets/favicon.ico";
 
-const container = document.getElementById('app');
-const root = createRoot(container)
+const container = document.getElementById("app");
 
-root.render(<App />)
+hydrateRoot(
+  container,
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
